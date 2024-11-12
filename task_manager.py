@@ -1,5 +1,24 @@
 import json
 
+
+# Dummy credentials
+USER_CREDENTIALS = {
+    "username": "admin",
+    "password": "password123"
+}
+
+def login():
+    print("Please login here:")
+    username = input("Username: ")
+    password = input("Password: ")
+    if username == USER_CREDENTIALS["username"] and password == USER_CREDENTIALS["password"]:
+        print("Login successful!\n")
+        return True
+    else:
+        print("Invalid credentials. Please try again.\n")
+        return False
+
+
 class Task:
 
     def __init__(self,id,title,completed=False):
@@ -62,28 +81,35 @@ def loadTask():
             print("No saved tasks found.")
 
 
-def main():    
-        loadTask()  # Load tasks at the start
-        while True:
-            print("\nChoose 1Options: \n1. Add Task \n2. View Tasks \n3. Delete Task  \n4. Complete Task  \n5. Save & Exit")
-            choice = input("Enter your choice: ")
+def main():
+    if not login():  # Call login function and check credentials
+        return  # Exit if login fails
+    
+    loadTask()  # Load tasks at the start
+    while True:
+        print("\nChoose an Option: \n1. Add Task \n2. View Tasks \n3. Delete Task \n4. Complete Task \n5. Save & Exit")
+        choice = input("Enter your choice: ")
 
-            if choice == "1":
-                title = input("Enter task title: ")
-                addTask(title)
-            elif choice == "2":
-                viewTask()
-            elif choice == "3":
-                task_id = int(input("Enter task ID to delete: "))
-                deleteTask(task_id)
-            elif choice == "4":
-                task_id = int(input("Enter task ID to complete: "))
-                markTaskCompleted(task_id)
-            elif choice == "5":
-                saveTask()
-                break
-            else:
-                print("Invalid choice. Please try again.")
+        if choice == "1":
+            title = input("Enter task title: ")
+            addTask(title)
+        elif choice == "2":
+            viewTask()
+        elif choice == "3":
+            task_id = int(input("Enter task ID to delete: "))
+            deleteTask(task_id)
+        elif choice == "4":
+            task_id = int(input("Enter task ID to complete: "))
+            markTaskCompleted(task_id)
+        elif choice == "5":
+            saveTask()
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+        
+       
+                
 
 if __name__ == "__main__":
     main()
