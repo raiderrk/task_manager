@@ -44,6 +44,11 @@ In the project directory, run the following command to start the application:
 python task_manager.py
 
 ```
+**Login Credentials (Testing Only):**
+
+* Email: admin
+* Password: password@123
+
 ### or
 
 - **use this link:**
