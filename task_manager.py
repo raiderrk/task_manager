@@ -17,29 +17,27 @@ def addTask(title):
         task =Task(task_id, title)
         tasks.append(task)
 
-        print("{} ,Task added sucessfully".format(title))
+        print("{}, Task added sucessfully".format(title))
 
 def viewTask():    
         for task in tasks:
-            if task.completed:
+            if task.completed==True:
                 status ="completed"
             else:
                 status ="Not Completed"
-            print("{}.{}= {}".format((task.id),(task.title),(status)))       
+            print("{}.{} = {}".format((task.id),(task.title),(status)))       
 
 
 def deleteTask(task_id):    
         global tasks
-        for task in tasks:
-            if task.id !=task_id:
-                tasks =task
-            print("{} ,Task deleted Sucessfully".format(task_id))  
+        tasks = [task for task in tasks if task.id != task_id]
+        print("{}, Task deleted Sucessfully.".format(task_id))  
 
 def markTaskCompleted(task_id):    
         for task in tasks:
             if task.id ==task_id:
                 task.completed =True 
-                print("{}, Task marked as complete".format(task_id))         
+                print("{}, Task marked as complete.".format(task_id))         
                 break
 
 
@@ -64,3 +62,29 @@ def loadTask():
             print("No saved tasks found.")
 
 
+def main():    
+        loadTask()  # Load tasks at the start
+        while True:
+            print("\nChoose 1Options: \n1. Add Task \n2. View Tasks \n3. Delete Task  \n4. Complete Task  \n5. Save & Exit")
+            choice = input("Enter your choice: ")
+
+            if choice == "1":
+                title = input("Enter task title: ")
+                addTask(title)
+            elif choice == "2":
+                viewTask()
+            elif choice == "3":
+                task_id = int(input("Enter task ID to delete: "))
+                deleteTask(task_id)
+            elif choice == "4":
+                task_id = int(input("Enter task ID to complete: "))
+                markTaskCompleted(task_id)
+            elif choice == "5":
+                saveTask()
+                break
+            else:
+                print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
+                      
