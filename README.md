@@ -47,8 +47,33 @@ python task_manager.py
 **Login Credentials (Testing Only):**
 
 * Email: admin
-* Password: password@123
+* Password: password123
 
-### or
 
-- **use this link:**
+## Usage of this CLI Application
+
+### Menu Options:
+
+1. **Add a Task:** Create a new task by entering its title.
+2. **View Tasks:** View a list of all tasks with their ID, title, and completion status.
+3. **Delete a Task:** Delete a task by entering its specific ID.
+4. **Mark a Task as Complete:** Update a task's status to "complete" using its ID.
+5. **Exit:** Exit the application. All tasks will be saved automatically.
+
+### Example Commands:
+
+* **Adding a Task:** Choose option 1 and type the title for your new task.
+* **Viewing Tasks:** Select option 2 to view all your tasks.
+* **Deleting a Task:** Choose option 3, then enter the task ID to delete it.
+* **Marking a Task as Complete:** Select option 4, then input the task ID to mark it as complete.
+* **Exiting:** Choose option 5 to exit. Tasks will be saved automatically before exiting.
+
+## File Structure
+
+- `task_manager.py`: The main application file containing the logic for the task management system.
+- `tasks.json`: A JSON file used to store task data, ensuring persistence between sessions.
+
+## General Info
+
+This application includes basic error handling for file operations and invalid task IDs to ensure smooth functionality.
+
